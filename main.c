@@ -26,41 +26,31 @@ int main() {
 			for (i = 0; i < 255; i++) {		//petla na rozjasnianie
 				OCR0A = i;
 				_delay_ms(5);
-
-			/*	if (OCR0A == 254) {
-					continue;
-				}*/
 			}
 
 			LED_PORT = 0xFF;
 		}
 
 		else	{
-			for(i=j; j; j--)		{		//petla na sciemnianie
-					 OCR0A=j;
-					 _delay_ms(5);
-					 }
+			for(i=j; j; j--)		{
+			OCR0A=j;
+			 _delay_ms(5);
+		    }
 		}
 
-		/*	OCR0A = 255;								//opcje na stan wysoki na pinie
-
-
-		 */
 
 	}
 }
 
 void PWM_Init(void) {
-	TCCR0A |= (1 << WGM01) | (1 << WGM00) | (1 << WGM02);//Timer0 w tryb Fast PWM
+	TCCR0A |= (1 << WGM01) | (1 << WGM00) | (1 << WGM02);//Timer0  Fast PWM
 	// TCCR0A |= (1<<COM0A0) | (1<<COM0A1);      // Clear OC0 at top
-	TCCR0A |= (1 << COM0A1);		// Set OC0 at TOP (rozjaśnia na HIGH avitve)
-
+	TCCR0A |= (1 << COM0A1);		// Set OC0 at TOP (HIGH avitve)
 	TCCR0B |= (1 << CS00);      // preskaler = 1
 }
 
 void LED_Init(void) {
 	DDRB |= 0xFF;
-
 	LED_DDR = 0xFF;
 }
 
